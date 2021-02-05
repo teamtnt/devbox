@@ -1,0 +1,23 @@
+server {
+    server_name {project};
+
+    listen 443 ssl;
+    listen 80;
+    
+    root /var/www/{project}/public;
+
+    error_log  /var/log/nginx/{project}-error.log;
+    access_log /var/log/nginx/{project}-access.log; 
+
+    location ~ \.php$ {
+        fastcgi_pass   {project}:9000;
+        fastcgi_index  index.php;
+        fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include        fastcgi_params;
+    }
+
+    location / {
+        index       index.html index.htm index.php;
+        try_files   $uri $uri/ /index.php?$query_string;
+    }
+}

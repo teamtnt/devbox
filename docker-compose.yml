@@ -1,0 +1,61 @@
+version: '3'
+services:
+
+  #PHP Services
+
+  
+  #Nginx Service
+  devbox-webserver:
+    image: nginx:alpine
+    container_name: webserver-devbox
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+      - ./docker/cert/:/etc/ssl/certs/
+    networks:
+      - devbox-network
+
+  #MariaDB Service
+  devbox-db:
+    image: mariadb:latest
+    container_name: mariadb-devbox
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mariadb 
+    volumes:
+      - ./docker/mysql/data/:/var/lib/mysql/
+      - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
+      - ./docker/mysql/seeds/:/docker-entrypoint-initdb.d
+    networks:
+      - devbox-network
+
+  devbox-redis:
+      image: "redis:alpine"
+      command: redis-server
+      container_name: redis-devbox
+      restart: unless-stopped
+      ports:
+       - "6379:6379"
+      volumes:
+        - ./docker/redis/redis-data:/var/lib/redis
+        - ./docker/redis/redis.conf:/usr/local/etc/redis/redis.conf
+      environment:
+        - REDIS_REPLICATION_MODE=master
+      networks:
+        - devbox-network
+
+#Docker Networks
+networks:
+  devbox-network:
+    driver: bridge
