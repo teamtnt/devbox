@@ -3,6 +3,9 @@
 TNT Devbox is a starter kit for local development using docker containers.
 To understand the principles behind `TNT Devbox` checkout the [guide](./guide.md).
 
+## Installation
+
+Clone this git repository to your development root directory. For example: `/Users/myusername/devbox/www`
 ## Creating a project
 
 ```bash
