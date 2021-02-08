@@ -64,3 +64,31 @@ Example:
 upload_max_filesize=128M
 post_max_size=128M
 ```
+## Changing PHP versions for a project
+
+The `Dockerfile` in the project directory defines the PHP version. But lets suppose you want to uprade php from 7.4 to 8.0 to see if your 
+application is working fine.
+Position yourself in the project directory and change the `Dockerfile` begging to `FROM php:8.0-fpm`
+
+now run `docker build --tag=projectname.test:8.0 .` while in the project directory.
+After that, open the `docker-compose.yml` file from the root directory and change the `projectname.test` service to:
+
+```
+image: projectname.test:8.0
+```
+
+Now you're application is running on PHP 8
+
+## Get shell access to a container
+
+While in the root directoy, simply run:
+
+```
+$ docker-compose exec project.test bash
+```
+
+or if you want to run only one command, you can execute it directly
+
+```
+$ docker-compose exec project.test php -v
+```
