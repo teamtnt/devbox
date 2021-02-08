@@ -1,5 +1,9 @@
 # Setting up a development envioronment with docker
 
+Docker is a great choice when it comes to setting up a dev environment. It's lightweight and performant. Getting started on a project feels like a breeze. All you have to do is to run one simple command. There is also docker compose that lets you run multiple container applications. 
+In the case of laravel, we know that we need at least a couple of containers, one for the database, one for the application, and one for the webserver. If you use redis, the number of containers keeps growing. All of this is fine if you're working only on one project at a time. If you're working on multiple projects, you'll find yourself stopping one project to start the other because the web ports are already used by the other projects. You could, of course,
+expose different ports to the host, but somehow, this doesn't feel rigth.
+
 As a developer, you'll find yourself working on multiple projects. Therefore it's important that you have the correct development environment, which will allow you to easily switch between projects or add new ones.
 
 We at TNT Studio follow some naming conventions, which, as you'll see will help us later.  For each of our projects, we create a top-level domain in the form of `someproject.test`. 
