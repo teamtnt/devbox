@@ -1,4 +1,4 @@
-# Setting up a development envioronment with docker
+# Setting up a development environment with docker
 
 Docker is a great choice when it comes to setting up a dev environment. It's lightweight and performant. Getting started on a project feels like a breeze. All you have to do is to run one simple command. There is also docker compose that lets you run multiple container applications. 
 In the case of laravel, we know that we need at least a couple of containers, one for the database, one for the application, and one for the webserver. If you use redis, the number of containers keeps growing. All of this is fine if you're working only on one project at a time. If you're working on multiple projects, you'll find yourself stopping one project to start the other because the web ports are already used by the other projects. You could, of course,
