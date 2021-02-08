@@ -23,8 +23,7 @@ The `docker-compose.yml` will hold the configuration that we need.
 Before we go on, let's briefly explain what we're looking for in a development environment. 
 Each of the projects should define its version of PHP, database and switching PHP versions should be simple.
 
-To satisfy the database need for each project, we can run one docker container with a MariaDB server. In the `docker-compose.yml` file,
-this will look like:
+To satisfy the database need for each project, we can run one docker container with a MariaDB server. The db server will have multiple databases, each for one project. In the `docker-compose.yml` file, this will look like:
 
 ```yaml
   #MariaDB Service
