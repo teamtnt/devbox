@@ -23,7 +23,7 @@ The `docker-compose.yml` will hold the configuration that we need.
 Before we go on, let's briefly explain what we're looking for in a development environment. 
 Each of the projects should define its version of PHP, database and switching PHP versions should be simple.
 
-To satisfy the database need for each project, we can run one docker container with a MariaDB server. The db server will have multiple databases, each for one project. In the `docker-compose.yml` file, this will look like:
+To satisfy the database need for each project, we can run one docker container with a database server. The db server will have multiple databases, each for one project. In the `docker-compose.yml` file, this will look like:
 
 ```yaml
   #MariaDB Service
@@ -46,6 +46,7 @@ To satisfy the database need for each project, we can run one docker container w
     networks:
       - devbox-network
 ```
+In case you prefer `MySQL` simply change, `mariadb` to `mysql`
 
 When started, this will create a database server that also opens a port to the host so you can connect to the server with your favorite tool like TablePlus.
 If you want your database to be seeded when created, add a dump file into the `docker/mysql/seeds/` folder. This will run only once and ensure that you get the data you need. If you need a custom configuration for you db server, you will put it in `docker/mysql/my.cnf`.
