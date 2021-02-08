@@ -6,6 +6,12 @@ To understand the principles behind `TNT Devbox` checkout the [guide](./guide.md
 ## Installation
 
 Clone this git repository to your development root directory. For example: `/Users/myusername/devbox/www`
+and make the `create-project` script executable
+
+```bash
+$ chmod +x ./docker/bin/create-project.sh
+```
+
 ## Creating a project
 
 ```bash
