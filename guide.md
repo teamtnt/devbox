@@ -2,7 +2,7 @@
 
 As a developer, you'll find yourself working on multiple projects. Therefore it's important that you have the correct development environment, which will allow you to easily switch between projects or add new ones.
 
-We at TNT Studio follow some naming conventions, which, as you'll see will help us later.  For each of our projects, we create a top-level domain in the form of "someproject.test". 
+We at TNT Studio follow some naming conventions, which, as you'll see will help us later.  For each of our projects, we create a top-level domain in the form of `someproject.test`. 
 
 All of the projects are located in one root directory that we specify, for example, `/Users/nenad/devbox/www`
 
