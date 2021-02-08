@@ -21,7 +21,7 @@ CREATE DATABASE IF NOT EXISTS projectdb;
 USE projectdb;
 ```
 
-## Adding custom rewrite rules to nginx
+## Adding custom configuration file to nginx
 
 Sometimes, your projects needs to have some rewrite rules or you migth add SSL certificates to your local development. 
 All this can be setup in `./docker/nginx/conf.d/project-name.test`. In the bellow example, we're adding certificates:
@@ -53,4 +53,14 @@ server {
         try_files   $uri $uri/ /index.php?$query_string;
     }
 }
+```
+
+## Adding a custom php.ini
+
+If you need some custom PHP settings you can do this by changing `./docker/php/local.ini`
+Example:
+
+```php
+upload_max_filesize=128M
+post_max_size=128M
 ```
