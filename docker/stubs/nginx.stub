@@ -1,7 +1,6 @@
 server {
     server_name {project};
 
-    listen 443 ssl;
     listen 80;
     
     root /var/www/{project}/public;
