@@ -39,6 +39,12 @@ services:
       - ./docker/mysql/seeds/:/docker-entrypoint-initdb.d
     networks:
       - devbox-network
+  #mysql
+  #MYSQL_ROOT_PASSWORD: 'root'
+  #MYSQL_DATABASE: 'dbname'
+  #MYSQL_USER: 'root'
+  #MYSQL_PASSWORD: 'root'
+  #MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
 
   devbox-redis:
       image: "redis:alpine"
