@@ -42,10 +42,10 @@ services:
   #mysql
   #my.cnf innodb_data_file_path = ibdata1:10M:autoextend
   #command: --default-authentication-plugin=mysql_native_password
-  #MYSQL_ROOT_PASSWORD: 'root'
-  #MYSQL_DATABASE: 'dbname'
-  #MYSQL_USER: 'root'
-  #MYSQL_PASSWORD: 'root'
+  #MYSQL_ROOT_PASSWORD: ''
+  #MYSQL_DATABASE: ''
+  #MYSQL_USER: ''
+  #MYSQL_PASSWORD: ''
   #MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
 
   devbox-redis:
@@ -64,7 +64,7 @@ services:
         - devbox-network
         
   #Sphinx Search service
-  primeros-sphinx:
+  devbox-sphinx:
     image: macbre/sphinxsearch:3.3.1
     ports:
     - "36307:36307" # bind to local interface only!
@@ -74,6 +74,19 @@ services:
     - ./docker/sphinx/sphinx.conf:/opt/sphinx/etc/sphinx.conf # SphinxSE configuration file
     - ./docker/sphinx/sphinx.conf:/opt/sphinx/conf/sphinx.conf # SphinxSE configuration file
     mem_limit: 512m # match indexer.value from sphinx.conf
+    networks:
+        - devbox-network\
+  #Minio S3 compatible Storage
+  devbox-storage:
+    image: minio/minio
+    ports:
+    - "9000:9000" # bind to local interface only!
+    environment:
+      MINIO_ACCESS_KEY: ""
+      MINIO_SECRET_KEY: ""
+    volumes:
+    - ./docker/minio/storage:/data 
+    command: server /data
     networks:
         - devbox-network
 
