@@ -62,6 +62,20 @@ services:
         - REDIS_REPLICATION_MODE=master
       networks:
         - devbox-network
+        
+  #Sphinx Search service
+  primeros-sphinx:
+    image: macbre/sphinxsearch:3.3.1
+    ports:
+    - "36307:36307" # bind to local interface only!
+    volumes:
+    - ./docker/sphinx/data:/opt/sphinx/index  # directory where sphinx will store index data
+    - ./docker/sphinx/data:/var/data/sphinxsearch
+    - ./docker/sphinx/sphinx.conf:/opt/sphinx/etc/sphinx.conf # SphinxSE configuration file
+    - ./docker/sphinx/sphinx.conf:/opt/sphinx/conf/sphinx.conf # SphinxSE configuration file
+    mem_limit: 512m # match indexer.value from sphinx.conf
+    networks:
+        - devbox-network
 
 #Docker Networks
 networks:
